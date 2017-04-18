@@ -1,0 +1,85 @@
+package gcs.com.br.gcscifras.layout;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.List;
+
+import gcs.com.br.gcscifras.R;
+import gcs.com.br.gcscifras.classes.domain.BaseClass;
+import gcs.com.br.gcscifras.classes.domain.Cifra;
+import gcs.com.br.gcscifras.classes.utils.CifrasUtils;
+import gcs.com.br.gcscifras.classes.utils.GCSCifrasConstants;
+import gcs.com.br.gcscifras.classes.utils.GCSCifrasUtils;
+import gcs.com.br.gcscifras.interfaces.OnCallBaseListener;
+
+/**
+ * Created by welisson on 17/04/17.
+ */
+
+public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.CustomViewHolder> {
+    private List<Cifra> _cifrasItemList;
+    private Context _context;
+
+    public ListViewAdapter(Context context, List<Cifra> cifrasItemList) {
+        this._cifrasItemList = cifrasItemList;
+        this._context = context;
+    }
+
+    @Override
+    public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.listviewrow, null);
+        CustomViewHolder viewHolder = new CustomViewHolder(view);
+        return viewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(final CustomViewHolder customViewHolder, int i) {
+        final Cifra cifra = _cifrasItemList.get(i);
+
+        //Setting text view title
+        //customViewHolder.tvLineOne.setText(Html.fromHtml(cifra.getNome()));
+        customViewHolder.tvLineOne.setText(cifra.getNome() + " - " + cifra.getArtista());
+        customViewHolder.tvLineTwoo.setText(cifra.getAlbum() + " - " + cifra.getGenero() + " - " + cifra.getAnoLancamento());
+        customViewHolder.id = cifra.getId();
+
+        customViewHolder.tvLinkCifra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle b = new Bundle();
+                b.putInt("id", customViewHolder.id);
+                GCSCifrasUtils.openActivity(_context, ViewCifraActivity.class, b);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return (null != _cifrasItemList ? _cifrasItemList.size() : 0);
+    }
+
+    class CustomViewHolder extends RecyclerView.ViewHolder {
+        protected TextView tvLineOne;
+        protected TextView tvLineTwoo;
+        protected  TextView tvLinkCifra;
+        protected int id;
+
+        public CustomViewHolder(View view) {
+            super(view);
+            this.tvLineOne = (TextView) view.findViewById(R.id.tvLineOne);
+            this.tvLineTwoo = (TextView) view.findViewById(R.id.tvLineTwoo);
+            this.tvLinkCifra = (TextView) view.findViewById(R.id.tvlinkCifra);
+            //this.tvLinkCifra.setMovementMethod(LinkMovementMethod.getInstance());
+        }
+    }
+}

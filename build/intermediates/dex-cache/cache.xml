@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/welisson/.android/build-cache/e0d50051747db8628d552f38f42794a557b30e84/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="/home/welisson/Dev/fontes/android/gcs/GCSCifras/app/build/intermediates/pre-dexed/debug/classes_c77628f3390d529721dc25e51e8d39dd9419e7cc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/welisson/.android/build-cache/ad074000855499ff3de1a5521a11008780ba527b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d9ecde39b460470e655de6e47c05573d2d5a8bfb">
+        <dex dex="/home/welisson/Dev/fontes/android/gcs/GCSCifras/app/build/intermediates/pre-dexed/debug/classes_b343da78ad97b59200a35b1c718c9d110294350a.jar" />
+    </item>
+
+</items>
