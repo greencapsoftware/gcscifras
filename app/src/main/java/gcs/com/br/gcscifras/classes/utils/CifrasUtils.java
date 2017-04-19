@@ -111,4 +111,33 @@ public class CifrasUtils {
         }
     }
 
+    public static void totalCifras(final Context context, final OnCallBaseListener listener)
+    {
+        CifrasAPI api = ServiceGenerator.createService(CifrasAPI.class);
+
+        try {
+            Call<Cifra> call = api.totalCifras();
+            call.enqueue(new Callback<Cifra>() {
+
+                @Override
+                public void onResponse(Call<Cifra> call, Response<Cifra> response) {
+
+                    if (response.isSuccessful()) {
+                        Cifra c = response.body();
+
+                        if (listener != null)
+                            listener.onCallBaseResult(c);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Cifra> call, Throwable t) {
+                    GCSCifrasUtils.showError(context, t.getMessage());
+                }
+            });
+
+        } catch (Exception ex) {
+            GCSCifrasUtils.showError(context, ex.getMessage());
+        }
+    }
 }

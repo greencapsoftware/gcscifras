@@ -8,7 +8,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import gcs.com.br.gcscifras.R;
+import gcs.com.br.gcscifras.classes.domain.BaseClass;
+import gcs.com.br.gcscifras.classes.domain.Cifra;
+import gcs.com.br.gcscifras.classes.utils.CifrasUtils;
 import gcs.com.br.gcscifras.classes.utils.GCSCifrasUtils;
+import gcs.com.br.gcscifras.interfaces.OnCallBaseListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +32,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        _tvTotal.setText(_tvTotal.getText().toString().replace("{0}", "1"));
+        CifrasUtils.totalCifras(MainActivity.this, new OnCallBaseListener() {
+            @Override
+            public void onCallBaseResult(BaseClass c) {
+                if (c != null) {
+                    Cifra t = (Cifra) c;
+                    _tvTotal.setText(_tvTotal.getText().toString().replace("{0}", String.valueOf(t.getId())));
+                }
+            }
+        });
+
     }
 
     private void setEvents() {
