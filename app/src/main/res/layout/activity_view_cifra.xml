@@ -22,13 +22,19 @@
             android:id="@+id/tvLineOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Linha 1" />
+            android:text="." />
 
         <TextView
             android:id="@+id/tvLineTwoo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Linha 2" />
+            android:text="." />
+        <CheckBox
+            android:id="@+id/cbAutoRoll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/autoRoll"
+            android:checked="true"/>
 
         <TextView
             android:id="@+id/tvCifra"
@@ -36,13 +42,13 @@
             android:layout_height="match_parent"
             android:maxLines = "5000"
             android:scrollbars = "vertical"
-            android:text="Cifra" />
+            android:text="@string/cipher" />
 
         <Button
             android:id="@+id/btnFechar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fechar"
+            android:text="@string/close"
             />
 
     </LinearLayout>

@@ -22,7 +22,7 @@
             android:id="@+id/btnPorOrdem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="A -> Z"
+            android:text="@string/orderedByName"
             />
 
         <Button
@@ -57,7 +57,7 @@
             android:id="@+id/tvTotal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Total de {0} cifras no servidor" />
+            android:text="@string/totalCipherServer" />
 
     </LinearLayout>
 

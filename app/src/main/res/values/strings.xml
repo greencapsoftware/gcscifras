@@ -3,4 +3,9 @@
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
     <string name="tvLinkCifra">Ver</string>
+    <string name="autoRoll">Rolagem Automática</string>
+    <string name="close">Fechar</string>
+    <string name="cipher">Cifra</string>
+    <string name="orderedByName"><![CDATA[A -> Z]]></string>
+    <string name="totalCipherServer">Total de {0} cifras no servidor</string>
 </resources>

@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.Timer;
@@ -20,6 +21,7 @@ public class ViewCifraActivity extends AppCompatActivity {
 
     Handler handler = new Handler();
     TextView _tvLineOne, _tvLineTwoo, _tvCifra;
+    CheckBox _cbAutoRoll;
     private int _cont = 0;
 
     @Override
@@ -36,6 +38,7 @@ public class ViewCifraActivity extends AppCompatActivity {
         _tvLineTwoo = (TextView)findViewById(R.id.tvLineTwoo);
         _tvCifra = (TextView)findViewById(R.id.tvCifra);
         _tvCifra.setMovementMethod(new ScrollingMovementMethod());
+        _cbAutoRoll = (CheckBox)findViewById(R.id.cbAutoRoll);
     }
 
     private void initialize() {
@@ -69,7 +72,7 @@ public class ViewCifraActivity extends AppCompatActivity {
                     public void run() {
                         _cont++;
 
-                        if (_cont < 30)
+                        if ((!_cbAutoRoll.isChecked()) || (_cont < 10))
                             return;
 
                         int scrollPos = (int) (_tvCifra.getScrollY() + 50.0);
