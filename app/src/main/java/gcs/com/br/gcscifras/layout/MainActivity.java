@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import gcs.com.br.gcscifras.R;
@@ -11,8 +12,10 @@ import gcs.com.br.gcscifras.classes.utils.GCSCifrasUtils;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button _btnPorOrdem, _btnPorArtista, _btnPorGenero, _btnPorAlbum, _btnPorLancamento;
+    Button _btnPorOrdem, _btnPorArtista, _btnPorGenero, _btnPorAlbum, _btnPorLancamento,
+        _btnSearch;
     TextView _tvTotal;
+    EditText _etSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (_btnPorLancamento != null)
             _btnPorLancamento.setOnClickListener(onClickListenerOrdem);
+
+        if (_btnSearch != null)
+            _btnSearch.setOnClickListener(onClickListenerOrdem);
     }
 
     private View.OnClickListener onClickListenerOrdem = new View.OnClickListener() {
@@ -66,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btnPorLancamento:
                     b.putInt("modo", 5);
                     break;
+                case R.id.btnSearch:
+                    b.putInt("modo", -1);
+                    b.putString("query", _etSearch.getText().toString());
+                    break;
             }
 
             GCSCifrasUtils.openActivity(MainActivity.this, ListViewActivity.class, b);
@@ -78,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         _btnPorGenero = (Button)findViewById(R.id.btnPorGenero);
         _btnPorAlbum = (Button)findViewById(R.id.btnPorAlbum);
         _btnPorLancamento = (Button)findViewById(R.id.btnPorLancamento);
+        _btnSearch = (Button)findViewById(R.id.btnSearch);
+        _etSearch = (EditText) findViewById(R.id.etSearch);
 
         _tvTotal = (TextView)findViewById(R.id.tvTotal);
     }

@@ -8,4 +8,5 @@
     <string name="cipher">Cifra</string>
     <string name="orderedByName"><![CDATA[A -> Z]]></string>
     <string name="totalCipherServer">Total de {0} cifras no servidor</string>
+    <string name="search">Buscar</string>
 </resources>

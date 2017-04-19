@@ -81,4 +81,34 @@ public class CifrasUtils {
         }
     }
 
+    public static void buscaCifras(int modo, String query, final Context context, final OnCallBaseListListener listener)
+    {
+        CifrasAPI api = ServiceGenerator.createService(CifrasAPI.class);
+
+        try {
+            Call<List<Cifra>> call = api.buscaCifras(modo, query);
+            call.enqueue(new Callback<List<Cifra>>() {
+
+                @Override
+                public void onResponse(Call<List<Cifra>> call, Response<List<Cifra>> response) {
+
+                    if (response.isSuccessful()) {
+                        List<Cifra> c = response.body();
+
+                        if (listener != null)
+                            listener.onCallBaseListResult(c);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Cifra>> call, Throwable t) {
+                    GCSCifrasUtils.showError(context, t.getMessage());
+                }
+            });
+
+        } catch (Exception ex) {
+            GCSCifrasUtils.showError(context, ex.getMessage());
+        }
+    }
+
 }

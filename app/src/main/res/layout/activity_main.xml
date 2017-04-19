@@ -53,6 +53,17 @@
             android:text="Lançamento"
             />
 
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/search"/>
+
         <TextView
             android:id="@+id/tvTotal"
             android:layout_width="match_parent"

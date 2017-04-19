@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ListView;
 
 import java.util.List;
 
@@ -38,16 +39,26 @@ public class ListViewActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         int modo = b.getInt("modo");
 
-        CifrasUtils.listaCifras(modo, ListViewActivity.this, new OnCallBaseListListener() {
-            @Override
-            public void onCallBaseListResult(List<Cifra> c) {
-                if (c != null) {
-                    _adapter = new ListViewAdapter(ListViewActivity.this, c);
-                    _rvCifras.setAdapter(_adapter);
-                }
-            }
-        });
-
-
+        //Busca de Cifras
+        if (modo == -1)
+        {
+            String query = b.getString("query");
+            CifrasUtils.buscaCifras(modo, query, ListViewActivity.this,
+                    onCallBaseListenerListaCifras);
+        }
+        else {
+            CifrasUtils.listaCifras(modo, ListViewActivity.this, onCallBaseListenerListaCifras);
+        }
     }
+
+    private OnCallBaseListListener onCallBaseListenerListaCifras = new OnCallBaseListListener() {
+
+        @Override
+        public void onCallBaseListResult(List<Cifra> c) {
+            if (c != null) {
+                _adapter = new ListViewAdapter(ListViewActivity.this, c);
+                _rvCifras.setAdapter(_adapter);
+            }
+        }
+    };
 }

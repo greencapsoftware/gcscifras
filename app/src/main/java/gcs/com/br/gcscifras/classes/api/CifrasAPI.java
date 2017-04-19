@@ -24,5 +24,5 @@ public interface CifrasAPI {
 
     @FormUrlEncoded
     @POST("ctrlcifrasandroid.php")
-    Call<List<Cifra>> buscaCifras(@Field("modo") String modo, @Field("q") String query);
+    Call<List<Cifra>> buscaCifras(@Field("modo") int modo, @Field("q") String query);
 }
