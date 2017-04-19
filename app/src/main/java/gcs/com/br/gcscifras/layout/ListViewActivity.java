@@ -35,7 +35,10 @@ public class ListViewActivity extends AppCompatActivity {
 
     private void initialize() {
 
-        CifrasUtils.listaCifras(1, ListViewActivity.this, new OnCallBaseListListener() {
+        Bundle b = getIntent().getExtras();
+        int modo = b.getInt("modo");
+
+        CifrasUtils.listaCifras(modo, ListViewActivity.this, new OnCallBaseListListener() {
             @Override
             public void onCallBaseListResult(List<Cifra> c) {
                 if (c != null) {

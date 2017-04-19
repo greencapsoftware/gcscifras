@@ -1,0 +1,4 @@
+Banco de Dados MySQL = u552019435_gcs
+Usuário MySQL = u552019435_qn
+MYSQL Senha = qn1507
+MySQL Host = mysql.hostinger.com.br

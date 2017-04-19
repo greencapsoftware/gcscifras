@@ -6,18 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.text.Format;
-
 import gcs.com.br.gcscifras.R;
-import gcs.com.br.gcscifras.classes.domain.BaseClass;
-import gcs.com.br.gcscifras.classes.domain.Cifra;
-import gcs.com.br.gcscifras.classes.utils.CifrasUtils;
 import gcs.com.br.gcscifras.classes.utils.GCSCifrasUtils;
-import gcs.com.br.gcscifras.interfaces.OnCallBaseListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button _btnPorOrdem;
+    Button _btnPorOrdem, _btnPorArtista, _btnPorGenero, _btnPorAlbum, _btnPorLancamento;
     TextView _tvTotal;
 
     @Override
@@ -36,17 +30,54 @@ public class MainActivity extends AppCompatActivity {
 
     private void setEvents() {
         if (_btnPorOrdem != null)
-            _btnPorOrdem.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    GCSCifrasUtils.openActivity(MainActivity.this, ListViewActivity.class);
-                //GCSCifrasUtils.openActivity(MainActivity.this, ViewCifraActivity.class);
-                }
-            });
+            _btnPorOrdem.setOnClickListener(onClickListenerOrdem);
+
+        if (_btnPorArtista != null)
+            _btnPorArtista.setOnClickListener(onClickListenerOrdem);
+
+        if (_btnPorGenero != null)
+            _btnPorGenero.setOnClickListener(onClickListenerOrdem);
+
+        if (_btnPorAlbum != null)
+            _btnPorAlbum.setOnClickListener(onClickListenerOrdem);
+
+        if (_btnPorLancamento != null)
+            _btnPorLancamento.setOnClickListener(onClickListenerOrdem);
     }
+
+    private View.OnClickListener onClickListenerOrdem = new View.OnClickListener() {
+
+        public void onClick(View v) {
+            Bundle b = new Bundle();
+
+            switch(v.getId()) {
+                case R.id.btnPorOrdem:
+                    b.putInt("modo", 1);
+                    break;
+                case R.id.btnPorArtista:
+                    b.putInt("modo", 2);
+                    break;
+                case R.id.btnPorGenero:
+                    b.putInt("modo", 3);
+                    break;
+                case R.id.btnPorAlbum:
+                    b.putInt("modo", 4);
+                    break;
+                case R.id.btnPorLancamento:
+                    b.putInt("modo", 5);
+                    break;
+            }
+
+            GCSCifrasUtils.openActivity(MainActivity.this, ListViewActivity.class, b);
+        }
+    };
 
     private void setControls() {
         _btnPorOrdem = (Button)findViewById(R.id.btnPorOrdem);
+        _btnPorArtista = (Button)findViewById(R.id.btnPorArtista);
+        _btnPorGenero = (Button)findViewById(R.id.btnPorGenero);
+        _btnPorAlbum = (Button)findViewById(R.id.btnPorAlbum);
+        _btnPorLancamento = (Button)findViewById(R.id.btnPorLancamento);
 
         _tvTotal = (TextView)findViewById(R.id.tvTotal);
     }
