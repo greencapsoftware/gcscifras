@@ -51,6 +51,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.Custom
         //customViewHolder.tvLineOne.setText(Html.fromHtml(cifra.getNome()));
         customViewHolder.tvLineOne.setText(cifra.getNome() + " - " + cifra.getArtista());
         customViewHolder.tvLineTwoo.setText(cifra.getAlbum() + " - " + cifra.getGenero() + " - " + cifra.getAnoLancamento());
+        customViewHolder.tvQtdAcessos.setText(String.valueOf(cifra.getQtdAcessos()) + " Acessos");
         customViewHolder.id = cifra.getId();
 
         customViewHolder.tvLinkCifra.setOnClickListener(new View.OnClickListener() {
@@ -69,9 +70,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.Custom
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
-        protected TextView tvLineOne;
-        protected TextView tvLineTwoo;
-        protected  TextView tvLinkCifra;
+        protected TextView tvLineOne, tvLineTwoo, tvLinkCifra, tvQtdAcessos;
         protected int id;
 
         public CustomViewHolder(View view) {
@@ -79,7 +78,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.Custom
             this.tvLineOne = (TextView) view.findViewById(R.id.tvLineOne);
             this.tvLineTwoo = (TextView) view.findViewById(R.id.tvLineTwoo);
             this.tvLinkCifra = (TextView) view.findViewById(R.id.tvlinkCifra);
-            //this.tvLinkCifra.setMovementMethod(LinkMovementMethod.getInstance());
+            this.tvQtdAcessos = (TextView) view.findViewById(R.id.tvQtdAcessos);
         }
     }
 }

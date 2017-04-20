@@ -41,6 +41,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tvLinkCifra"/>
+                <TextView
+                    android:id="@+id/tvQtdAcessos"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
         </RelativeLayout>

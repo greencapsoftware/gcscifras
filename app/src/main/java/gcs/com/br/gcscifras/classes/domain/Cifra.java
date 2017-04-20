@@ -12,6 +12,7 @@ public class Cifra extends BaseClass {
     private String album;
     private int anoLancamento;
     private String cifra;
+    private int qtdAcessos;
 
     public int getId() {
         return id;
@@ -69,6 +70,10 @@ public class Cifra extends BaseClass {
         this.cifra = cifra;
     }
 
+    public int getQtdAcessos() { return qtdAcessos; }
+
+    public void setQtdAcessos(int qtdAcessos) { this.qtdAcessos = qtdAcessos; }
+
     public Cifra preenche(Cifra c)
     {
         this.setId(c.id);
@@ -78,21 +83,8 @@ public class Cifra extends BaseClass {
         this.setAlbum(c.album);
         this.setAnoLancamento(c.anoLancamento);
         this.setCifra(c.cifra);
+        this.setQtdAcessos(c.qtdAcessos);
 
         return this;
     }
 }
-
-/*
-
-{
-	"id": 0,
-	"nome": "Cifra Nome",
-	"artista": "Artista Nome",
-	"genero": "Gênero Nome",
-	"album": "Álbum Nome",
-	"anoLancamento": 2017,
-	"cifra": "ASDFGÇLKJH"
-}
-
- */
