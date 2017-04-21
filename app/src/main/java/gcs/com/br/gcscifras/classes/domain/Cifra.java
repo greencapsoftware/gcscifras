@@ -14,6 +14,24 @@ public class Cifra extends BaseClass {
     private String cifra;
     private int qtdAcessos;
     private String urlCapa;
+    private String tags;
+
+    public Cifra preenche(Cifra c)
+    {
+        this.setId(c.id);
+        this.setNome(c.nome);
+        this.setArtista(c.artista);
+        this.setGenero(c.genero);
+        this.setAlbum(c.album);
+        this.setAnoLancamento(c.anoLancamento);
+        this.setCifra(c.cifra);
+        this.setQtdAcessos(c.qtdAcessos);
+        this.setUrlCapa(c.urlCapa);
+        this.setTags(c.tags);
+
+        return this;
+    }
+
 
     public int getId() {
         return id;
@@ -79,18 +97,7 @@ public class Cifra extends BaseClass {
 
     public void setUrlCapa(String urlCapa) { this.urlCapa = urlCapa; }
 
-    public Cifra preenche(Cifra c)
-    {
-        this.setId(c.id);
-        this.setNome(c.nome);
-        this.setArtista(c.artista);
-        this.setGenero(c.genero);
-        this.setAlbum(c.album);
-        this.setAnoLancamento(c.anoLancamento);
-        this.setCifra(c.cifra);
-        this.setQtdAcessos(c.qtdAcessos);
-        this.setUrlCapa(c.urlCapa);
+    public String getTags() { return tags; }
 
-        return this;
-    }
+    public void setTags(String tags) { this.tags = tags; }
 }
