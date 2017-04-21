@@ -72,7 +72,7 @@ public class ViewCifraActivity extends AppCompatActivity {
                     public void run() {
                         _cont++;
 
-                        if ((!_cbAutoRoll.isChecked()) || (_cont < 10))
+                        if ((!_cbAutoRoll.isChecked()) || (_cont < 2))
                             return;
 
                         int scrollPos = (int) (_tvCifra.getScrollY() + 50.0);
@@ -82,6 +82,6 @@ public class ViewCifraActivity extends AppCompatActivity {
                 });
             }
         };
-        timer.schedule(doAsynchronousTask, 0, 1000);
+        timer.schedule(doAsynchronousTask, 0, 3000);
     }
 }

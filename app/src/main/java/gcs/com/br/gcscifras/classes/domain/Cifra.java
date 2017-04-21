@@ -13,6 +13,7 @@ public class Cifra extends BaseClass {
     private int anoLancamento;
     private String cifra;
     private int qtdAcessos;
+    private String urlCapa;
 
     public int getId() {
         return id;
@@ -74,6 +75,10 @@ public class Cifra extends BaseClass {
 
     public void setQtdAcessos(int qtdAcessos) { this.qtdAcessos = qtdAcessos; }
 
+    public String getUrlCapa() { return urlCapa; }
+
+    public void setUrlCapa(String urlCapa) { this.urlCapa = urlCapa; }
+
     public Cifra preenche(Cifra c)
     {
         this.setId(c.id);
@@ -84,6 +89,7 @@ public class Cifra extends BaseClass {
         this.setAnoLancamento(c.anoLancamento);
         this.setCifra(c.cifra);
         this.setQtdAcessos(c.qtdAcessos);
+        this.setUrlCapa(c.urlCapa);
 
         return this;
     }

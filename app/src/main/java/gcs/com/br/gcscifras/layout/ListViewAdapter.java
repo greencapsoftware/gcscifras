@@ -1,18 +1,31 @@
 package gcs.com.br.gcscifras.layout;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+
+import java.io.InputStream;
 import java.util.List;
 
 import gcs.com.br.gcscifras.R;
@@ -54,7 +67,10 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.Custom
         customViewHolder.tvQtdAcessos.setText(String.valueOf(cifra.getQtdAcessos()) + " Acessos");
         customViewHolder.id = cifra.getId();
 
-        customViewHolder.tvLinkCifra.setOnClickListener(new View.OnClickListener() {
+        setImage(customViewHolder.ivCardBgd,
+                cifra.getUrlCapa());
+
+        customViewHolder.btLinkCifra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle b = new Bundle();
@@ -70,15 +86,31 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.Custom
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
-        protected TextView tvLineOne, tvLineTwoo, tvLinkCifra, tvQtdAcessos;
+        protected TextView tvLineOne, tvLineTwoo, tvQtdAcessos;
+        protected Button btLinkCifra;
+        protected ImageView ivCardBgd;
         protected int id;
 
         public CustomViewHolder(View view) {
             super(view);
             this.tvLineOne = (TextView) view.findViewById(R.id.tvLineOne);
             this.tvLineTwoo = (TextView) view.findViewById(R.id.tvLineTwoo);
-            this.tvLinkCifra = (TextView) view.findViewById(R.id.tvlinkCifra);
+            this.btLinkCifra = (Button) view.findViewById(R.id.btLinkCifra);
             this.tvQtdAcessos = (TextView) view.findViewById(R.id.tvQtdAcessos);
+            this.ivCardBgd = (ImageView) view.findViewById(R.id.ivCardBgd);
         }
     }
+
+    private void setImage(ImageView iv, String url)
+    {
+        ImageLoader imageLoader = ImageLoader.getInstance(); // Get singleton instance
+
+        // Load image, decode it to Bitmap and display Bitmap in ImageView (or any other view
+        //  which implements ImageAware interface)
+        imageLoader.displayImage(url,
+                iv
+                        /*, defaultOptions*/);
+    }
+
+
 }

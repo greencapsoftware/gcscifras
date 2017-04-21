@@ -1,2 +1,0 @@
-- Passar os modos de abertura de cada botão pro php
-- Passar cifras para BD

@@ -1,46 +1,91 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_margin="5dp"
+        android:layout_width="200dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         card_view:cardCornerRadius="2dp"
-        card_view:contentPadding="10dp">
+        android:layout_gravity="center"
+        card_view:contentPadding="5dp">
 
-        <RelativeLayout
+        <!--ImageView
+                android:id="@+id/flag"
+                android:layout_width="fill_parent"
+                android:layout_height="250dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher" /-->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/ivCardBgd"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:scaleType="fitXY"/>
 
-            <TextView
-                android:id="@+id/tvLineOne"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:textStyle="bold"/>
+                <TextView
+                   android:id="@+id/tvLineOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:shadowColor="#000"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    />
 
-            <TextView
-                android:id="@+id/tvLineTwoo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvLineOne"
-                android:layout_marginTop="10dp"/>
+                <TextView
+                    android:id="@+id/tvLineTwoo"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="42dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:textStyle="italic"
+                    android:shadowColor="#000"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"/>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="60dp">
-                <TextView
+                android:orientation="horizontal">
+                <!--TextView
                     android:id="@+id/tvlinkCifra"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tvLinkCifra"/>
+                    android:text="@string/tvLinkCifra"/-->
+
+                <Button
+                    android:id="@+id/btLinkCifra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tvLinkCifra"
+                    style="@style/Widget.AppCompat.Button.Borderless"/>
+
                 <TextView
                     android:id="@+id/tvQtdAcessos"
                     android:layout_width="wrap_content"
@@ -48,8 +93,6 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-        </RelativeLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
-
-
 </LinearLayout>

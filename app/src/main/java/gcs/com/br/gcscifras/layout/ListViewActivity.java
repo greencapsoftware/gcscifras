@@ -6,6 +6,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
 
+import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+
 import java.util.List;
 
 import gcs.com.br.gcscifras.R;
@@ -35,6 +42,21 @@ public class ListViewActivity extends AppCompatActivity {
     }
 
     private void initialize() {
+
+        // UNIVERSAL IMAGE LOADER SETUP
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(false)
+                .imageScaleType(ImageScaleType.EXACTLY)
+                .displayer(new FadeInBitmapDisplayer(300)).build();
+
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+                getApplicationContext())
+                .defaultDisplayImageOptions(defaultOptions)
+                .memoryCache(new WeakMemoryCache())
+                .build();
+
+        ImageLoader.getInstance().init(config);
+        // END - UNIVERSAL IMAGE LOADER SETUP
 
         Bundle b = getIntent().getExtras();
         int modo = b.getInt("modo");
