@@ -15,6 +15,7 @@ public class Cifra extends BaseClass {
     private int qtdAcessos;
     private String urlCapa;
     private String tags;
+    private float pontuacao;
 
     public Cifra preenche(Cifra c)
     {
@@ -28,6 +29,7 @@ public class Cifra extends BaseClass {
         this.setQtdAcessos(c.qtdAcessos);
         this.setUrlCapa(c.urlCapa);
         this.setTags(c.tags);
+        this.setPontuacao(c.pontuacao);
 
         return this;
     }
@@ -100,4 +102,8 @@ public class Cifra extends BaseClass {
     public String getTags() { return tags; }
 
     public void setTags(String tags) { this.tags = tags; }
+
+    public float getPontuacao() { return pontuacao; }
+
+    public void setPontuacao(float pontuacao) { this.pontuacao = pontuacao; }
 }

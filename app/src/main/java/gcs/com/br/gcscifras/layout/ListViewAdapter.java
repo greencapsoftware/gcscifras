@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -66,6 +67,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.Custom
         customViewHolder.tvLineTwoo.setText(cifra.getAlbum() + " - " + cifra.getGenero() + " - " + cifra.getAnoLancamento());
         customViewHolder.tvQtdAcessos.setText(String.valueOf(cifra.getQtdAcessos()) + " Acessos");
         customViewHolder.id = cifra.getId();
+        customViewHolder.rbPontuacao.setRating(cifra.getPontuacao());
 
         setImage(customViewHolder.ivCardBgd,
                 cifra.getUrlCapa());
@@ -89,6 +91,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.Custom
         protected TextView tvLineOne, tvLineTwoo, tvQtdAcessos;
         protected Button btLinkCifra;
         protected ImageView ivCardBgd;
+        protected RatingBar rbPontuacao;
         protected int id;
 
         public CustomViewHolder(View view) {
@@ -98,6 +101,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.Custom
             this.btLinkCifra = (Button) view.findViewById(R.id.btLinkCifra);
             this.tvQtdAcessos = (TextView) view.findViewById(R.id.tvQtdAcessos);
             this.ivCardBgd = (ImageView) view.findViewById(R.id.ivCardBgd);
+            this.rbPontuacao = (RatingBar) view.findViewById(R.id.rbPontuacao);
         }
     }
 
